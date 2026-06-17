@@ -3,6 +3,7 @@
     "name": "glow-up-app",
     "slug": "glow-up-app",
     "version": "1.0.0",
+    "scheme": "glowupapp",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store"
+    ]
   }
 }
