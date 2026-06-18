@@ -101,6 +101,8 @@ export default function AppLayout() {
             <Tabs.Screen name="diet" options={{ title: 'Dieta' }} />
             <Tabs.Screen name="cycle" options={{ title: 'Ciclo' }} />
             <Tabs.Screen name="progress" options={{ title: 'Evolução' }} />
+            <Tabs.Screen name="fasting" options={{ href: null }} />
+            <Tabs.Screen name="hydration" options={{ href: null }} />
           </Tabs>
           <SideDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
         </View>

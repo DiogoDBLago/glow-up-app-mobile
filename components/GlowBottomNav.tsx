@@ -63,16 +63,18 @@ export function GlowBottomNav({ state, navigation }: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
   const [containerWidth, setContainerWidth] = useState(0);
   const pillX = useSharedValue(0);
-  const tabWidth = containerWidth / Math.max(state.routes.length, 1);
+  const visibleRoutes = state.routes.filter((route) => route.name in LABELS);
+  const focusedIndex = visibleRoutes.findIndex((route) => route.key === state.routes[state.index].key);
+  const tabWidth = containerWidth / Math.max(visibleRoutes.length, 1);
 
   useEffect(() => {
-    if (containerWidth > 0) {
-      pillX.value = withTiming(state.index * tabWidth, {
+    if (containerWidth > 0 && focusedIndex >= 0) {
+      pillX.value = withTiming(focusedIndex * tabWidth, {
         duration: 260,
         easing: Easing.out(Easing.cubic),
       });
     }
-  }, [state.index, containerWidth, tabWidth]);
+  }, [focusedIndex, containerWidth, tabWidth]);
 
   const pillStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: pillX.value }],
@@ -114,11 +116,11 @@ export function GlowBottomNav({ state, navigation }: BottomTabBarProps) {
                 <LinearGradient colors={['#DB2777', '#FF4F93']} style={{ flex: 1 }} />
               </Animated.View>
             )}
-            {state.routes.map((route, index) => (
+            {visibleRoutes.map((route, index) => (
               <TabButton
                 key={route.key}
                 routeName={route.name}
-                focused={state.index === index}
+                focused={focusedIndex === index}
                 onPress={() => navigation.navigate(route.name)}
               />
             ))}

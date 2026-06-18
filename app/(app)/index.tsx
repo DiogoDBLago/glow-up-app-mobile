@@ -311,6 +311,9 @@ export default function HomeScreen() {
             <AppText style={styles.hydrationBtnSolidText}>+500ml</AppText>
           </Pressable>
         </View>
+        <Pressable onPress={() => router.push('/(app)/hydration' as never)} style={styles.hydrationDetailsBtn}>
+          <AppText style={styles.hydrationDetailsBtnText}>Detalhes</AppText>
+        </Pressable>
       </View>
 
       {/* Progresso semanal */}
@@ -553,6 +556,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#3B82F6',
   },
   hydrationBtnSolidText: { fontSize: 12.5, fontWeight: '700', color: '#FFFFFF' },
+  hydrationDetailsBtn: { marginTop: 10, borderRadius: 999, paddingVertical: 10, alignItems: 'center', backgroundColor: 'rgba(59,130,246,0.05)', borderWidth: 1, borderColor: 'rgba(59,130,246,0.15)' },
+  hydrationDetailsBtnText: { fontSize: 12.5, fontWeight: '600', color: '#3B82F6' },
   weeklyHeader: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
   weeklyPct: { fontFamily: 'System', fontSize: 24, fontWeight: '700', color: '#FF4F93' },
   weekdaysRow: { marginTop: 16, flexDirection: 'row', gap: 6 },
